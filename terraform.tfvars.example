@@ -1,0 +1,41 @@
+# Copy to terraform.tfvars and edit. terraform.tfvars is gitignored.
+
+aws_region = "us-east-1"
+
+# Every other region this account runs things in. EBS encryption by default and
+# IAM Access Analyzer are per-region settings, so a region left off this list
+# has neither. aws_region is always included and does not need repeating.
+# operating_regions = ["us-west-2", "eu-west-1"]
+
+# NOTE: the list of AWS accounts this project may run against is NOT here. It
+# lives in locals.tf, on purpose -- this file is gitignored, so an allowlist
+# override in it would not be reviewable.
+
+# Both bucket names default to "<purpose>-<account-id>-<region>", which is
+# globally unique without you having to pick anything. Uncomment to override.
+# terraform_state_bucket_name = "my-company-tfstate"
+# cloudtrail_bucket_name      = "my-company-cloudtrail"
+
+# Roles allowed to decrypt Terraform state. Empty means the state key falls
+# back to plain IAM delegation -- see the encryption notes in the README.
+# Anything not listed here gets AccessDenied on state, so include every role
+# that runs Terraform against this account.
+# state_key_user_arns = ["arn:aws:iam::123456789012:role/terraform"]
+
+# cloudtrail_name                         = "account-activity"
+# cloudtrail_retention_days               = 365
+# state_noncurrent_version_retention_days = 90
+
+# S3 Object Lock on the CloudTrail bucket. GOVERNANCE can be bypassed by a
+# principal holding s3:BypassGovernanceRetention, and that bypass is itself
+# logged. COMPLIANCE cannot be bypassed by anyone, including the account root,
+# and you pay to store the logs for the full period regardless -- read the
+# README before switching. Retention must not exceed cloudtrail_retention_days.
+# cloudtrail_object_lock_mode           = "GOVERNANCE"
+# cloudtrail_object_lock_retention_days = 365
+
+# default_tags = {
+#   owner      = "infrastructure"
+#   managed_by = "terraform"
+#   project    = "aws-account-setup"
+# }
