@@ -181,6 +181,6 @@ variable "default_tags" {
   default = {
     owner      = "infrastructure"
     managed_by = "terraform"
-    project    = "aws-account-setup"
+    project    = "aws-account-base"
   }
 }

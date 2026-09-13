@@ -1,8 +1,12 @@
-# aws-account-setup
+# aws-account-base
 
 The first Terraform project to run against a brand new AWS account. It creates
 what every other Terraform project in the account depends on, plus a minimal
 audit baseline.
+
+This is NOT a module, you need to clone this project and reuse it pointing to 
+your AWS account [check the Getting started](#getting-started) page for more 
+details. 
 
 ## What it configures
 

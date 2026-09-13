@@ -37,5 +37,5 @@ aws_region = "us-east-1"
 # default_tags = {
 #   owner      = "infrastructure"
 #   managed_by = "terraform"
-#   project    = "aws-account-setup"
+#   project    = "aws-account-base"
 # }
